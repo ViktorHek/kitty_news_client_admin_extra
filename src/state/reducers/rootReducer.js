@@ -36,6 +36,16 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         errorMessage: action.payload,
       }
+    case 'OPEN_LOGIN_FORM':
+      return {
+        ...state,
+        logInModalOpen: true,
+      }
+    case 'CLOSE_LOGIN_FORM':
+      return {
+        ...state,
+        logInModalOpen: false,
+      }
     default:
       return state
   }
