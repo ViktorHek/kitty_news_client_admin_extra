@@ -12,7 +12,7 @@ import {
 } from 'semantic-ui-react'
 
 import { useDispatch, useSelector } from 'react-redux'
-import ArticlesServices from '../modules/ArticlesServices'
+import ArticlesCreation from '../modules/ArticlesCreation'
 
 const CreateArticleForm = () => {
   const dispatch = useDispatch()
@@ -28,7 +28,7 @@ const CreateArticleForm = () => {
       <Header>Create Article</Header>
       <Form
         data-cy='article-form'
-        onSubmit={(event) => ArticlesServices.create(event, dispatch)}
+        onSubmit={(event) => ArticlesCreation.create(event, dispatch)}
       >
         <Form.Field
           data-cy='title-field'
