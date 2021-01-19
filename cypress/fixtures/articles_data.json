@@ -1,0 +1,24 @@
+{
+  "articles": [
+    {
+      "id": 1,
+      "title": "Cats are better than dogs!",
+      "lead": "Have you noticed how smelly dogs are? Well that..."
+    },
+    {
+      "id": 2,
+      "title": "Emma should get a cat instead!",
+      "lead": "Why? No borks. No smelly smells."
+    },
+    {
+      "id": 3,
+      "title": "Thomas most likely needs a cat in his life",
+      "lead": "They bring calm vibes. May be needed"
+    },
+    {
+      "id": 4,
+      "title": "Why is Emma leaving us? ",
+      "lead": "Please stay. We have cats"
+    }
+  ]
+}
