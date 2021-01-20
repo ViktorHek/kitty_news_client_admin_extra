@@ -2,6 +2,7 @@ import axios from 'axios'
 
 const ArticlesService = {
   async index(dispatch) {
+    debugger
     try {
       const result = await axios.get('/articles')
       dispatch({

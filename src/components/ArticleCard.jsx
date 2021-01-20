@@ -17,7 +17,7 @@ const ArticleCard = ({ article }) => {
         src={article.image}
       />
       <Item.Content>
-        <Item.Description>{article.title}</Item.Description>
+        <Item.Description data-cy="index-title">{article.title}</Item.Description>
         <Item.Meta>{article.lead}</Item.Meta>
       </Item.Content>
     </Item>

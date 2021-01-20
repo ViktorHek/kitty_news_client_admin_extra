@@ -1,8 +1,9 @@
 import React, { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { ArticlesService } from "../modules/ArticlesService";
-import { Container, Grid, Image } from 'semantic-ui-react'
+import { Container, Grid, Image, Button } from 'semantic-ui-react'
 import { useDispatch, useSelector } from 'react-redux'
+import ArticleIndex from "./ArticleIndex";
 
 const DisplayArticle = () => {
   const dispatch = useDispatch()
@@ -31,6 +32,9 @@ const DisplayArticle = () => {
           <h1>{errorMessage}</h1>
         </Container>
       )}
+      <Button data-cy="article-back-button" onClick={() => <ArticleIndex/>}>
+        Back
+      </Button>
     </>
   )
 }
