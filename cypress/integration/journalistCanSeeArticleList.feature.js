@@ -66,6 +66,16 @@ describe('Journalist can login to see a list of articles', () => {
           'Everybody wants to be a cat. cuz a cat is a cat who knows where it is at'
         )
       })
+      it("can go back to index by pressing back button", () => {
+        cy.get("[data-cy='article-index']").within(() => {
+          cy.get("[data-cy='article-1']").click()
+        })
+        cy.get('[data-cy="article-back-button"]').click()
+        cy.get("[data-cy='article-index']").within(() => {
+          cy.contains('Why is Emma leaving us? ')
+          cy.contains('Please stay. We have cats')
+        })
+      })
     })
   })
 })
