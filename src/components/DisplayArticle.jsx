@@ -3,11 +3,12 @@ import { useParams } from 'react-router-dom'
 import { ArticlesService } from "../modules/ArticlesService";
 import { Container, Grid, Image, Button } from 'semantic-ui-react'
 import { useDispatch, useSelector } from 'react-redux'
-import { NavLink } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
-const DisplayArticle = (article) => {
+const DisplayArticle = () => {
   const dispatch = useDispatch()
-  const { specificArticle, errorMessage, newsFeed } = useSelector(
+  const history = useHistory()
+  const { specificArticle, errorMessage } = useSelector(
     (state) => state
   )
   const { id } = useParams()
@@ -16,6 +17,9 @@ const DisplayArticle = (article) => {
     ArticlesService.show(id, dispatch)
   }, [id, dispatch])
 
+  const backToIndex = () => {
+    history.goBack()
+  }
   return (
     <>
       <Grid data-cy="article-display" centered>
@@ -32,12 +36,7 @@ const DisplayArticle = (article) => {
           <h1>{errorMessage}</h1>
         </Container>
       )}
-      <Button data-cy="article-back-button" 
-        // onClick={() => ArticlesService.index(dispatch)}
-        key={article}
-        as={NavLink}
-        to={'/articles'}
-      >
+      <Button data-cy="article-back-button" onClick={backToIndex}>
         Back
       </Button>
     </>
