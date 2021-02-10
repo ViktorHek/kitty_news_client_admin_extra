@@ -1,7 +1,7 @@
 import axios from "axios";
 import toBase64 from "./toBase64";
 
-const ArticlesServices = {
+const ArticlesCreation = {
   async create(event, dispatch) {
     event.preventDefault();
     let headers = JSON.parse(localStorage.getItem("J-tockAuth-Storage"));
@@ -39,4 +39,4 @@ const ArticlesServices = {
   },
 };
 
-export default ArticlesServices;
+export default ArticlesCreation;
