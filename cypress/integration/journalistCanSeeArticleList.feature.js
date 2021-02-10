@@ -49,7 +49,7 @@ describe('Journalist can login to see a list of articles', () => {
           response: 'fixture:article_data.json',
         })
       })
-      it('read a specific article', () => {
+      xit('read a specific article', () => {
         cy.get("[data-cy='article-index']").within(() => {
           cy.get("[data-cy='article-1']").click()
         })
@@ -66,7 +66,7 @@ describe('Journalist can login to see a list of articles', () => {
           'Everybody wants to be a cat. cuz a cat is a cat who knows where it is at'
         )
       })
-      it("can go back to index by pressing back button", () => {
+      xit("can go back to index by pressing back button", () => {
         cy.get("[data-cy='article-index']").within(() => {
           cy.get("[data-cy='article-1']").click()
         })

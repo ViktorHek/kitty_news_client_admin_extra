@@ -1,26 +1,30 @@
-import React, {useEffect} from 'react'
-import { ArticlesService } from "../modules/ArticlesService";
-import ArticleCard from "./ArticleCard";
-import { Item, Container } from "semantic-ui-react";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useEffect } from 'react'
+import { ArticlesService } from '../modules/ArticlesService'
+import ArticleCard from './ArticleCard'
+import { Item, Container } from 'semantic-ui-react'
+import { useDispatch, useSelector } from 'react-redux'
 
 const ArticleIndex = () => {
-  const dispatch = useDispatch();
-  const { newsFeed } = useSelector(state => state);
+  const dispatch = useDispatch()
+  const { newsFeed } = useSelector((state) => state)
+  const fetchNews = async () => {
+    debugger
+    let articleList = await ArticlesService.index()
+    dispatch({ type: 'SET_NEWS_FEED', payload: articleList })
+  }
 
   useEffect(() => {
-    ArticlesService.index(dispatch);
-  }, [dispatch]);
+    fetchNews()
+  }, [])
 
-  let articleIndex;
+  let articleIndex
   articleIndex = (
-    <Item.Group 
-    vertical>
+    <Item.Group vertical>
       {newsFeed.map((article) => {
-        return <ArticleCard article={{ ...article }} />;
+        return <ArticleCard article={{ ...article }} />
       })}
     </Item.Group>
-  );
+  )
 
   return (
     <>
@@ -32,7 +36,7 @@ const ArticleIndex = () => {
         </Container>
       )}
     </>
-  );
+  )
 }
 
 export default ArticleIndex

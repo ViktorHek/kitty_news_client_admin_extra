@@ -1,19 +1,12 @@
 import axios from 'axios'
 
 const ArticlesService = {
-  async index(dispatch) {
-    debugger
+  async index() {
     try {
-      const result = await axios.get('/articles')
-      dispatch({
-        type: 'SET_NEWS_FEED',
-        payload: result.data.articles,
-      })
+      const response = await axios.get('/articles')
+      return response.data.articles
     } catch (error) {
-      dispatch({
-        type: 'ERROR_MESSAGE',
-        payload: 'MEOW, something went wrong!',
-      })
+      console.log(error)
     }
   },
 

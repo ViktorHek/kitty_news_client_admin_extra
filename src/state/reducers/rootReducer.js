@@ -21,6 +21,7 @@ const rootReducer = (state = initialState, action) => {
         auth: { message: 'You are logged in', status: true },
       }
     case 'SET_NEWS_FEED':
+      debugger
       return {
         ...state,
         newsFeed: action.payload,

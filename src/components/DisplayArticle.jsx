@@ -3,9 +3,9 @@ import { useParams } from 'react-router-dom'
 import { ArticlesService } from "../modules/ArticlesService";
 import { Container, Grid, Image, Button } from 'semantic-ui-react'
 import { useDispatch, useSelector } from 'react-redux'
-// import ArticleIndex from "./ArticleIndex";
+import { NavLink } from "react-router-dom";
 
-const DisplayArticle = () => {
+const DisplayArticle = (article) => {
   const dispatch = useDispatch()
   const { specificArticle, errorMessage, newsFeed } = useSelector(
     (state) => state
@@ -32,7 +32,12 @@ const DisplayArticle = () => {
           <h1>{errorMessage}</h1>
         </Container>
       )}
-      <Button data-cy="article-back-button" onClick={() => ArticlesService.index(dispatch)}>
+      <Button data-cy="article-back-button" 
+        // onClick={() => ArticlesService.index(dispatch)}
+        key={article}
+        as={NavLink}
+        to={'/articles'}
+      >
         Back
       </Button>
     </>
