@@ -7,10 +7,13 @@ import CreateArticleForm from './CreateArticleForm'
 const HomePage = () => {
   return (
     <>
-      <h1 data-cy='homepage-greeting'>Hello and Welcome to the admin page for Kitty News</h1>
+      <h1 data-cy="homepage-greeting">
+        Hello and Welcome to the admin page for Kitty News
+      </h1>
       <CreateArticleForm />
       <Switch>
-        <Route exact path="/" component={ArticleIndex}></Route>
+        <Route exact path="/" component={HomePage}></Route>
+        <Route exact path="/articles" component={ArticleIndex}></Route>
         <Route exact path="/articles/:id" component={DisplayArticle}></Route>
       </Switch>
     </>

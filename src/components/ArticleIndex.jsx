@@ -8,7 +8,6 @@ const ArticleIndex = () => {
   const dispatch = useDispatch()
   const { newsFeed } = useSelector((state) => state)
   const fetchNews = async () => {
-    debugger
     let articleList = await ArticlesService.index()
     dispatch({ type: 'SET_NEWS_FEED', payload: articleList })
   }
@@ -18,7 +17,6 @@ const ArticleIndex = () => {
   }, [])
 
   let articleIndex
-  debugger
   articleIndex = (
     <Item.Group vertical>
       {newsFeed.map((article) => {
