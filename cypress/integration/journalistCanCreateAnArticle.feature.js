@@ -15,13 +15,20 @@ describe("Journalist can create an article", () => {
       url: "http://localhost:3000/api/auth/validate_token**",
       response: "fixture:journalist_can_login.json",
     });
+    cy.route({
+      method: 'GET',
+      url: 'http://localhost:3000/api/articles',
+      response: 'fixture:articles_data.json',
+    })
     cy.visit("/");
     cy.get("[data-cy='login-form']").within(() => {
       cy.get("[data-cy='email']").type("journalist@mail.com");
       cy.get("[data-cy='password']").type("password");
       cy.get("[data-cy='submit-btn']").contains("Submit").click();
     });
+    cy.get("[data-cy='create-article-button']").click()
   });
+
   describe("successfully", () => {
     it("when all fields are filled in ", () => {
       cy.route({
@@ -49,6 +56,7 @@ describe("Journalist can create an article", () => {
       });
     });
   });
+
   describe("unsuccessfully", () => {
     it("when title is not filled in ", () => {
       cy.route({
@@ -68,6 +76,7 @@ describe("Journalist can create an article", () => {
         );
       });
     });
+
     it("when lead is not filled in ", () => {
       cy.route({
         method: "POST",
@@ -86,6 +95,7 @@ describe("Journalist can create an article", () => {
         );
       });
     });
+
     it("when body is not filled in ", () => {
       cy.route({
         method: "POST",
@@ -104,6 +114,7 @@ describe("Journalist can create an article", () => {
         );
       });
     });
+    
     it("when category is not selected", () => {
       cy.route({
         method: "POST",

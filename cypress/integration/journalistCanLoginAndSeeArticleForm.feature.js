@@ -15,8 +15,14 @@ describe("Journalist can login to see article form", () => {
       url: "http://localhost:3000/api/auth/validate_token**",
       response: "fixture:journalist_can_login.json",
     });
+    cy.route({
+      method: 'GET',
+      url: 'http://localhost:3000/api/articles',
+      response: 'fixture:articles_data.json',
+    })
     cy.visit("/");
   });
+
   describe("successfully", () => {
     it("with correct credentials", () => {
       cy.get("[data-cy='login-form']").within(() => {
@@ -28,9 +34,10 @@ describe("Journalist can login to see article form", () => {
         "contain",
         "Meow! Welcome back journalist@mail.com"
       );
-      cy.get("[data-cy='article-form']").should("exist");
+      cy.get("[data-cy='homepage-greeting']").should("contain", "Hello and Welcome to the admin page for Kitty News");
     });
   });
+
   describe("unsuccessfully", () => {
     it("with wrong credentials", () => {
       cy.route({
@@ -53,7 +60,7 @@ describe("Journalist can login to see article form", () => {
       cy.get("[data-cy='header-user-email']").contains(
         "Woof! You're not logged in yet."
       );
-      cy.get("[data-cy='article-form']").should("not.exist");
+      cy.get("[data-cy='homepage-greeting']").should("not.exist");
     });
 
     it("with right credentials but not an journalist", () => {
@@ -79,7 +86,7 @@ describe("Journalist can login to see article form", () => {
       cy.get("[data-cy='header-user-email']").contains(
         "Woof! You're not logged in yet."
       );
-      cy.get("[data-cy='article-form']").should("not.exist");
+      cy.get("[data-cy='homepage-greeting']").should("not.exist");
     });
   });
 });
